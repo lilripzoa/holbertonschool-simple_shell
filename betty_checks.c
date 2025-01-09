@@ -9,6 +9,6 @@
 
 int main(void)
 {
-	printf("hello world");
+	printf("hello world"); /*affiche hello world*/
 	return (0);
 }
