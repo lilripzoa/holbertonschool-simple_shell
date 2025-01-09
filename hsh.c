@@ -14,7 +14,7 @@
 
 ssize_t lire_commande(char **commande, size_t *taille)
 {
-	printf("simple_shell>"); /*prompt*/
+	printf("simple_shell> "); /*prompt*/
 	return (getline(commande, taille, stdin)); /*lit ce que l'user a entré*/
 }
 
@@ -26,7 +26,7 @@ ssize_t lire_commande(char **commande, size_t *taille)
 
 void executer_commande(char *commande)
 {
-	pid_t pid = fork(); /*créer un precessus fils*/
+	pid_t pid = fork(); /*créer un processus fils*/
 
 	if (pid == -1)
 	{
@@ -36,12 +36,17 @@ void executer_commande(char *commande)
 
 	if (pid == 0)
 	{
-		if (execvp(commande, NULL) == -1) /*essaie d'executer la commande*/
+		char *args[2]; /*tableau de 2 elements :  commande et un null*/
+		args[0] = commande;
+		args[1] = NULL;
+
+		if (execvp(commande, args) == -1) /*essaie d'executer la commande*/
 		{
 			perror("Erreur d'execution");
 			exit(1); /*quitte avec un code erreur*/
 		}
 	}
+
 	else
 	{
 		waitpid(pid, NULL, 0); /*attend la fin du processus fils*/
@@ -59,7 +64,7 @@ void simple_shell(void)
 	size_t taille = 0;
 	ssize_t ncl;
 
-	while (1)
+	while(1)
 	{
 		ncl = lire_commande(&commande, &taille); /*lit la commande de l'user*/
 
@@ -68,9 +73,11 @@ void simple_shell(void)
 			printf("\n");
 			break; /*quitte le shell*/
 		}
+
 		commande[strcspn(commande, "\n")] = 0; /*enleve '\n'*/
 		executer_commande(commande); /*execute la commande*/
 	}
+
 	free(commande); /*libere memoire allouée*/
 }
 

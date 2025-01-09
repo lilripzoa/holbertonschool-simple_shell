@@ -2,13 +2,12 @@
 #include "main.h"
 
 /**
- * main - Entry point of the program
- *
+ * betty_checks - afficher hello world
  * Return: Always 0 (Success)
  */
 
-int main(void)
+int betty_checks(void)
 {
-	printf("hello world"); /*affiche hello world*/
+	printf("hello world");
 	return (0);
 }
