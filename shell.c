@@ -37,6 +37,7 @@ void executer_commande(char *commande)
 	if (pid == 0)
 	{
 		char *args[2]; /*tableau de 2 elements :  commande et un null*/
+
 		args[0] = commande;
 		args[1] = NULL;
 
@@ -64,7 +65,7 @@ void simple_shell(void)
 	size_t taille = 0;
 	ssize_t ncl;
 
-	while(1)
+	while (1)
 	{
 		ncl = lire_commande(&commande, &taille); /*lit la commande de l'user*/
 
@@ -75,6 +76,13 @@ void simple_shell(void)
 		}
 
 		commande[strcspn(commande, "\n")] = 0; /*enleve '\n'*/
+
+		if (strcmp(commande, "exit") == 0)
+		{
+			free(commande);
+			exit(0);
+		}
+
 		executer_commande(commande); /*execute la commande*/
 	}
 
