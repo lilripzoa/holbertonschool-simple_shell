@@ -36,10 +36,7 @@ void executer_commande(char *commande)
 
 	if (pid == 0)
 	{
-		char *args[2]; /*tableau de 2 elements :  commande et un null*/
-
-		args[0] = commande;
-		args[1] = NULL;
+		char *args[] = {commande, NULL}; /*tableau de 2 elements*/
 
 		if (execvp(commande, args) == -1) /*essaie d'executer la commande*/
 		{
@@ -98,4 +95,4 @@ int main(void)
 {
 	simple_shell();
 	return (0); /*le programme s'est terminé correctement*/
-}
+i}
