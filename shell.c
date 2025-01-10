@@ -43,7 +43,7 @@ void executer_commande(char *commande)
 		args[i++] = token; /*premier argument (commande)*/
 
 		/*ajout autres arguemnts*/
-		while ((token = strtok(NULL, " "))!= NULL)
+		while ((token = strtok(NULL, " ")) != NULL)
 		{
 			args[i++] = token;
 		}
