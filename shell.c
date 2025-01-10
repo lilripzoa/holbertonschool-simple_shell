@@ -72,7 +72,7 @@ void simple_shell(void)
 		if (ncl == -1) /*si l'user appuie sur ctrl+d*/
 		{
 			printf("\n");
-			break; /*quitte le shell*/
+			continue;
 		}
 
 		commande[strcspn(commande, "\n")] = 0; /*enleve '\n'*/
