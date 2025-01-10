@@ -36,12 +36,26 @@ void executer_commande(char *commande)
 
 	if (pid == 0)
 	{
-		char *args[2]; /*tableau de 2 elements*/
-		
-		args[0] = commande;
-		args[1] = NULL;
+		char *args[100]; /*tableau*/
+		char *token = strtok(commande, " "); /*separe commande des arguements*/
+		int i = 0;
 
-		if (execvp(commande, args) == -1) /*essaie d'executer la commande*/
+		args[i++] = token; /*premier argument (commande)*/
+
+		/*ajout autres arguemnts*/
+		while ((token = strtok(NULL, " "))!= NULL)
+		{
+			args[i++] = token;
+		}
+
+		args[i] = NULL; /*termine avec NULL*/
+
+		if (strcmp(args[0], "ls") == 0)
+		{
+			args[0] = "/bin/ls"; /*remplace ls par son chemin*/
+		}
+
+		if (execvp(args[0], args) == -1) /*essaie d'executer la commande*/
 		{
 			perror("Erreur d'execution");
 			exit(1); /*quitte avec un code erreur*/
