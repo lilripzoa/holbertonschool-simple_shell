@@ -26,7 +26,7 @@ $ cd holbertonschool-simple_shell
 $ gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
 $ ./holbertonschool-simple_shell
 ```
-    
+
 ## Authorized functions
 
 Dans ce projet, toutes les fonctions autorisées sont:
