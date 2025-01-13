@@ -12,7 +12,6 @@
 /* global variable*/
 extern char **environ;
 
-
 /* function prototypes*/
 char **splitter(char *str, char *delim);
 char *_getline(void);
