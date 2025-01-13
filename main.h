@@ -9,11 +9,8 @@
 #include <sys/wait.h>
 #include <sys/type.h>
 
-/* global variable*/
 extern char **environ;
 
-
-/* function prototypes*/
 char **splitter(char *str, char *delim);
 char *_getline(void);
 char **pathfinder(void);
