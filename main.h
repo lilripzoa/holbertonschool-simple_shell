@@ -1,15 +1,26 @@
 #ifndef MAIN_H
 #define MAIN_H
 
+#include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <unistd.h>
 #include <sys/wait.h>
-#include <string.h>
+#include <sys/type.h>
 
-ssize_t lire_commande(char **commande, size_t *taille);
-void executer_commande(char *commande);
-void simple_shell(void);
-int betty_checks(void);
+/* global variable*/
+extern char **environ;
+
+
+/* function prototypes*/
+char **splitter(char *str, char *delim);
+char *_getline(void);
+char **pathfinder(void);
+void executer(char *command, char **array);
+void environ_printer(void);
+void array_cleaner(char **array);
+void exit_shell(int status);
+void env_shell(char *env_var);
 
 #endif
