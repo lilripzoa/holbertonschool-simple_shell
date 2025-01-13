@@ -6,7 +6,7 @@
 #include "main.h"
 
 /**
- * lire_commande - function qui li la commande entré par l'utilisateur
+ * lire_commande - function pour lire la commande entré par l'user
  * @commande: commmande
  * @taille: taille
  * Return: la ligne de commande
